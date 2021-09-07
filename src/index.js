@@ -96,4 +96,4 @@ client.on("messageCreate", (message) => {
 });
 
 //grab data from database url and when finished, make the bot online.
-grabDataAndRun("https://pgr-bot-asimov-db.herokuapp.com");
+grabDataAndRun("https://pgr-bot-celica-db.herokuapp.com");
