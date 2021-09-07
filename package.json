@@ -1,0 +1,25 @@
+{
+  "name": "exp",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "no test specified",
+    "start": "node ./src/index.js",
+    "dev": "nodemon ./src/index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "axios": "^0.21.1",
+    "discord-api-types": "^0.22.0",
+    "discord.js": "^13.1.0",
+    "dotenv": "^10.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "lodash": "^4.17.21",
+    "node": "16.6.1",
+    "node-fetch": "^2",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2"
+  }
+}
