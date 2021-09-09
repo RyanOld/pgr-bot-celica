@@ -16,6 +16,7 @@
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
+    "fuse.js": "^6.4.6",
     "lodash": "^4.17.21",
     "node": "16.6.1",
     "node-fetch": "^2",

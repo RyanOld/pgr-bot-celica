@@ -1,9 +1,9 @@
 const { Client, Intents, MessageEmbed } = require("discord.js");
 //organizers
-const { organizeConstructByRank } = require("./constructs/constructOrganizer");
-const { organizeMemoryByStar } = require("./memories/memoryOrganizer");
-const { organizeWeaponByStar } = require("./weapons/weaponOrganizer");
-const { organizeBosses } = require("./bosses/bossOrganizer");
+const { organizeConstructByRank } = require("./constructs/organizer");
+const { organizeMemoryByStar } = require("./memories/organizer");
+const { organizeWeaponByStar } = require("./weapons/organizer");
+const { organizeBosses } = require("./bosses/organizer");
 
 const { listenAndReply } = require("./listener");
 const fetch = require("node-fetch");
@@ -91,8 +91,12 @@ client.once("ready", () => {
   console.log(`Ready! Logged in as ${client.user.tag}`);
 });
 //for every instance of an event of x kind happening, do y.
-client.on("messageCreate", (message) => {
+client.on("messageCreate", async (message) => {
   listenAndReply(message, database);
+});
+//respond to select menu exclusively
+client.on("interactionCreate", async (interaction) => {
+  interaction.update(interactionReplier(interaction, database));
 });
 
 //grab data from database url and when finished, make the bot online.
