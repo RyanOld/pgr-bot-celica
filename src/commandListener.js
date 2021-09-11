@@ -1,4 +1,4 @@
-const { replySwitch } = require("./replier");
+const { commandReplier } = require("./commandReplier");
 const listenAndReply = async (message, database) => {
   //this if to make the bot not reply to bots including itself.
   //only listen to a channel with the name "bot" like #bot-spam-channel
@@ -18,7 +18,7 @@ const listenAndReply = async (message, database) => {
   commandWords[0] = commandWords[0].split(prefix)[1];
   console.log(commandWords);
   //detects keywords relating to database query.
-  message.reply(replySwitch(commandWords, prefix, database));
+  message.reply(commandReplier(commandWords, prefix, database));
 };
 
 exports.listenAndReply = listenAndReply;

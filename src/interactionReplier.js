@@ -5,7 +5,16 @@ const interactionReplier = (interaction, database) => {
   if (interaction.isSelectMenu()) {
     switch (interaction.customId) {
       case "main_menu":
-        return;
+        switch (interaction.values[0]) {
+          case "constructs":
+            return;
+          case "memories":
+            return;
+          case "weapons":
+            return;
+          case "bosses":
+            return;
+        }
       case "construct_select_menu":
         return;
       case "memory_select_menu":

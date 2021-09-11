@@ -1,63 +1,16 @@
-const Fuse = require("fuse.js");
-const constructEmbed = (constructData, subCommands) => {
-  console.log(constructData[2]);
-  const fuse = new Fuse(constructData, {
-    findAllMatches: false,
-    keys: ["name"],
-  });
-  console.log(subCommands);
-  let searchedConstruct = fuse.search(subCommands.join(" "))[0].item;
-  console.log(subCommands.join(" "));
-  console.log(searchedConstruct);
+const constructEmbed = (prefix, constructs) => {
   return {
     components: [
       {
         type: 1,
         components: [
           {
-            custom_id: `construct_select_menu`,
-            placeholder: `Choose What You Want to Know More`,
+            custom_id: `memory_select`,
+            placeholder: `Find out more about a certain memory here`,
             options: [
               {
-                label: `Construct Main Menu`,
-                value: `construct_main_menu`,
-                description: `Go back to the main menu of this construct.`,
-                default: false,
-              },
-              {
-                label: `Orb Skills`,
-                value: `orb_skills`,
-                description: `See this construct's orb skills(red, blue, and yellow pings).`,
-                default: false,
-              },
-              {
-                label: `Active Skills`,
-                value: `active_skills`,
-                description: `See this construct's active skills(basic attack, QTE, and ultimate/signature moves).`,
-                default: false,
-              },
-              {
-                label: `Passive Skills`,
-                value: `passive_skills`,
-                description: `See this construct's passive skills(core, class-specific, leader, and rank up passive skills).`,
-                default: false,
-              },
-              {
-                label: `Construct Builds`,
-                value: `construct_builds`,
-                description: `See the recommended build for this construct(weapon and memories).`,
-                default: false,
-              },
-              {
-                label: `Team Builds`,
-                value: `team_builds`,
-                description: `See the recommended team builds for this construct.`,
-                default: false,
-              },
-              {
-                label: `Team Strategy`,
-                value: `team_strategy`,
-                description: `See tips on how to use this construct's team more effectively.`,
+                label: `[memory name] | [Rarity] | [Use Case]`,
+                value: `memory_[name]`,
                 default: false,
               },
             ],
@@ -71,45 +24,29 @@ const constructEmbed = (constructData, subCommands) => {
     embeds: [
       {
         type: "rich",
-        title: searchedConstruct.name,
-        color: 0x00ffff,
+        title: `Constructs`,
+        description: `Look up a construct's detailed info here.`,
+        color: 0xd1c701,
         fields: [
           {
-            name: `Class`,
-            value: searchedConstruct.construct_class.class,
+            name: `Get here by :`,
+            value: `- typing the command ${prefix}construct.\n- or by selecting \"constructs\" in main menu.`,
           },
           {
-            name: `Rank`,
-            value: searchedConstruct.rank.replace("_", " "),
+            name: `How to use this menu?`,
+            value: `The select menu below contains the list of all constructs in the database with the format :`,
           },
           {
-            name: `Elements`,
-            value: searchedConstruct.element,
+            name: "\u200B",
+            value: `Construct Name | Rank | Class`,
           },
           {
-            name: `Weapon Type`,
-            value: searchedConstruct.weapon_type.type,
-          },
-          {
-            name: `Signature Weapon`,
-            value: searchedConstruct.signature_weapon.name,
+            name: "\u200B",
+            value: `You can click the name of the construct you want to find out more about. It may take some time as the bot is retrieving the data from the database.`,
           },
         ],
-        image: {
-          url: `https://static.wikia.nocookie.net/punishing-gray-raven/images/e/e8/Karenina_-_Ember.png/revision/latest/scale-to-width-down/350?cb=20210718140127`,
-        },
-        thumbnail: {
-          url: `https://static.wikia.nocookie.net/punishing-gray-raven/images/f/f1/Dialogue-Lotus-Icon.png/revision/latest/scale-to-width-down/70?cb=20210901034113`,
-          height: 0,
-          width: 0,
-        },
-        url: `https://punishing-gray-raven.fandom.com/wiki/${
-          searchedConstruct.name[0] == " "
-            ? searchedConstruct.name.replace(" ", "").replaceAll(" ", "_")
-            : searchedConstruct.name.replaceAll(" ", "_")
-        }`,
+        url: `https://punishing-gray-raven.fandom.com/wiki/Characters`,
       },
     ],
   };
 };
-exports.constructEmbed = constructEmbed;
