@@ -1,7 +1,7 @@
 # serverless.yml
  
 # Service name
-service: 1
+service: '1'
  
 # Framework version constraint (semver constraint): '3', '^2.33'
 frameworkVersion: '3'
