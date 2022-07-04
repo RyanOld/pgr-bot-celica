@@ -2,6 +2,8 @@
  
 # Service name
 service: '1'
+#app
+app: 'aws-node'
  
 # Framework version constraint (semver constraint): '3', '^2.33'
 frameworkVersion: '3'
